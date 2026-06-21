@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="hr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MeteoHR Pro Ultimate</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>🌦️ MeteoHR Pro Ultimate</h1>
+<input id="place" placeholder="Upiši mjesto"><button onclick="loadWeather()">Prikaži</button>
+<div id="summary"></div>
+<div id="map"></div>
+<canvas id="tempChart"></canvas>
+<canvas id="rainChart"></canvas>
+<div id="forecast"></div>
+<script src="js/app.js"></script>
+</body></html>
