@@ -3,3 +3,10 @@ body{font-family:Arial;background:#08152f;color:white;margin:0}
 input,button{padding:12px;border:none;border-radius:10px;margin:2px}
 .card{background:#10264d;padding:12px;border-radius:12px;margin:10px 0}
 canvas{background:white;border-radius:12px;margin:10px 0}table{width:100%}td{padding:5px}
+canvas{
+  max-width:100%;
+}
+
+#rainChart{
+  height:250px !important;
+}
