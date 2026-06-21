@@ -49,27 +49,20 @@ if(t)t.destroy(); if(w)w.destroy();
 t=new Chart(tempChart,{type:'line',data:{labels:d.hourly.time.slice(0,48),datasets:[{label:'Temperatura',data:d.hourly.temperature_2m.slice(0,48)}]}});
 w=new Chart(windChart,{type:'line',data:{labels:d.hourly.time.slice(0,48),datasets:[{label:'Udari vjetra',data:d.hourly.wind_gusts_10m.slice(0,48)}]}});
 if(rainChartObj) rainChartObj.destroy();
-rainChartObj = new Chart(
-document.getElementById("rainChart"),
-{
-  type:'bar',
-  data:{
-    labels:d.hourly.time.slice(0,48).map(x=>x.slice(11,16)),
-    datasets:[{
+const rainChart = document.getElementById('rainChart');
+
+new Chart(rainChart,{
+ type:'bar',
+ data:{
+   labels:d.hourly.time.slice(0,24).map(t=>t.slice(11,16)),
+   datasets:[{
       label:'Kiša %',
-      data:d.hourly.precipitation_probability.slice(0,48)
-    }]
-  },
-  options:{
-    responsive:true,
-    maintainAspectRatio:false,
-    scales:{
-      y:{
-        beginAtZero:true,
-        max:100
-      }
-    }
-  }
+      data:d.hourly.precipitation_probability.slice(0,24)
+   }]
+ },
+ options:{
+   responsive:true
+ }
 });
 
 let h="<div class='card'><h3>⏰ 24 sata</h3><table>";
