@@ -21,7 +21,30 @@ const hail=Math.min(100,Math.round(rain*0.6+Math.max(0,gust-30)));
 const storm=Math.min(100,Math.round(rain*0.7+Math.max(0,gust-20)));
 const cape=Math.round(storm*20);
 summary.innerHTML=`<div class='card'><h2>${name}</h2>🌡️ ${d.current.temperature_2m}°C | 💨 ${d.current.wind_speed_10m} km/h<br>⚡ CAPE procjena: ${cape} J/kg<br>🧊 Tuča: ${hail}% | 🚨 Nevrijeme: ${storm}%</div>`;
-alerts.innerHTML=`<div class='card'>Upozorenje: ${storm>70?'🔴 Visok rizik':'🟢 Nizak do umjeren rizik'}</div>`;
+let color="🟢";
+let txt="Nizak rizik";
+
+if(storm>=20){
+  color="🟡";
+  txt="Umjeren rizik";
+}
+
+if(storm>=50){
+  color="🟠";
+  txt="Povećan rizik";
+}
+
+if(storm>=70){
+  color="🔴";
+  txt="Visok rizik";
+}
+
+alerts.innerHTML=`
+<div class='card'>
+${color} ${txt}<br>
+🧊 Tuča: ${hail}%<br>
+🚨 Nevrijeme: ${storm}%
+</div>`;
 if(t)t.destroy(); if(w)w.destroy();
 t=new Chart(tempChart,{type:'line',data:{labels:d.hourly.time.slice(0,48),datasets:[{label:'Temperatura',data:d.hourly.temperature_2m.slice(0,48)}]}});
 w=new Chart(windChart,{type:'line',data:{labels:d.hourly.time.slice(0,48),datasets:[{label:'Udari vjetra',data:d.hourly.wind_gusts_10m.slice(0,48)}]}});
