@@ -20,7 +20,22 @@ if(t)t.destroy(); if(w)w.destroy();
 t=new Chart(tempChart,{type:'line',data:{labels:d.hourly.time.slice(0,48),datasets:[{label:'Temperatura',data:d.hourly.temperature_2m.slice(0,48)}]}});
 w=new Chart(windChart,{type:'line',data:{labels:d.hourly.time.slice(0,48),datasets:[{label:'Udari vjetra',data:d.hourly.wind_gusts_10m.slice(0,48)}]}});
 let h="<div class='card'><h3>⏰ 24 sata</h3><table>";
-for(let i=0;i<24;i++)h+=`<tr><td>${d.hourly.time[i].slice(11,16)}</td><td>${d.hourly.temperature_2m[i]}°C</td><td>${d.hourly.precipitation_probability[i]}%</td></tr>`;
+for(let i=0;i<24;i++)h+{
+ let rain=d.hourly.precipitation_probability[i];
+ let ico="☀️";
+
+ if(rain>=20) ico="⛅";
+ if(rain>=50) ico="🌧️";
+ if(rain>=80) ico="⛈️";
+
+ h+=`
+ <tr>
+   <td>${ico}</td>
+   <td>${d.hourly.time[i].slice(11,16)}</td>
+   <td>${d.hourly.temperature_2m[i]}°C</td>
+   <td>${rain}%</td>
+ </tr>`;
+};
 hourly.innerHTML=h+"</table></div>";
 let f="<div class='card'><h3>📅 7 dana</h3><table>";
 for(let i=0;i<7;i++)f+=`<tr><td>${icon(d.daily.weather_code[i])}</td><td>${d.daily.time[i]}</td><td>${d.daily.temperature_2m_min[i]}°/${d.daily.temperature_2m_max[i]}°</td><td>${d.daily.precipitation_probability_max[i]}%</td></tr>`;
