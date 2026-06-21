@@ -1,6 +1,14 @@
 
 let map=L.map('map').setView([45.8,16],7);
-L.tileLayer('https://tilecache.rainviewer.com/v2/radar/latest/256/{z}/{x}/{y}/2/1_1.png',{opacity:0.6}).addTo(map);
+const radar = L.tileLayer(
+'https://tilecache.rainviewer.com/v2/radar/latest/256/{z}/{x}/{y}/6/1_1.png',
+{
+  opacity: 0.6,
+  attribution: 'RainViewer'
+}
+);
+
+radar.addTo(map);
 let marker,t,w;
 function icon(c){if(c===0)return'☀️';if([1,2,3].includes(c))return'⛅';if([95,96,99].includes(c))return'⛈️';if([51,53,55,61,63,65,80,81,82].includes(c))return'🌧️';return'☁️';}
 function myLocation(){navigator.geolocation.getCurrentPosition(p=>loadCoords(p.coords.latitude,p.coords.longitude));}
