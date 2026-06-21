@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MeteoHR Ultimate 3.0</title>
+<style>
+body{font-family:Arial,sans-serif;background:#0b1f3a;color:#fff;margin:0;padding:15px}
+.card{background:#16345f;padding:15px;border-radius:16px;margin:10px 0}
+input,button{padding:12px;border-radius:10px;border:none}
+input{width:65%} button{cursor:pointer}
+#map{height:300px;border-radius:16px;background:#244b80;display:flex;align-items:center;justify-content:center}
+table{width:100%;border-collapse:collapse}
+td,th{padding:6px;border-bottom:1px solid rgba(255,255,255,.15)}
+</style>
+</head>
+<body>
+<h1>🌦️ MeteoHR Ultimate 3.0</h1>
+
+<div class="card">
+<input placeholder="Upiši mjesto (npr. Sirova Katalena)">
+<button>Prikaži</button>
+</div>
+
+<div class="card">
+<h3>🌡️ Trenutni uvjeti</h3>
+<p>Temperatura • Vjetar • Udari • Vjerojatnost kiše</p>
+</div>
+
+<div id="map" class="card">🗺️ Karta (dodaj Leaflet/OpenStreetMap u GitHub verziji)</div>
+
+<div class="card">
+<h3>🚨 Rizik</h3>
+<p>🧊 Tuča: 25%</p>
+<p>⛈️ Nevrijeme: 30%</p>
+<p>⚡ CAPE: Umjeren</p>
+</div>
+
+<div class="card">
+<h3>⏰ Prognoza 24 sata</h3>
+<table>
+<tr><th></th><th>Sat</th><th>Temp</th><th>Kiša</th><th>Vjetar</th><th>Udari</th></tr>
+<tr><td>☀️</td><td>12:00</td><td>28°C</td><td>5%</td><td>10 km/h</td><td>18 km/h</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h3>📅 Prognoza 7 dana</h3>
+<p>Pon 18/28°C 🌤️</p>
+<p>Uto 19/30°C ☀️</p>
+</div>
+</body>
+</html>
