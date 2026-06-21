@@ -7,7 +7,7 @@ L.tileLayer(
   attribution: '&copy; OpenStreetMap'
 }
 ).addTo(map);
-let marker,t,w;
+let marker,t,w,rainChartObj;
 function icon(c){if(c===0)return'☀️';if([1,2,3].includes(c))return'⛅';if([95,96,99].includes(c))return'⛈️';if([51,53,55,61,63,65,80,81,82].includes(c))return'🌧️';return'☁️';}
 function myLocation(){navigator.geolocation.getCurrentPosition(p=>loadCoords(p.coords.latitude,p.coords.longitude));}
 async function loadWeather(){const p=document.getElementById('place').value;const g=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(p)+'&count=1');const j=await g.json();if(j.results)loadCoords(j.results[0].latitude,j.results[0].longitude,j.results[0].name);}
@@ -48,6 +48,24 @@ ${color} ${txt}<br>
 if(t)t.destroy(); if(w)w.destroy();
 t=new Chart(tempChart,{type:'line',data:{labels:d.hourly.time.slice(0,48),datasets:[{label:'Temperatura',data:d.hourly.temperature_2m.slice(0,48)}]}});
 w=new Chart(windChart,{type:'line',data:{labels:d.hourly.time.slice(0,48),datasets:[{label:'Udari vjetra',data:d.hourly.wind_gusts_10m.slice(0,48)}]}});
+if(rainChartObj) rainChartObj.destroy();
+
+rainChartObj = new Chart(
+document.getElementById("rainChart"),
+{
+  type:'bar',
+  data:{
+    labels:d.hourly.time.slice(0,48).map(x=>x.slice(11,16)),
+    datasets:[{
+      label:'Kiša %',
+      data:d.hourly.precipitation_probability.slice(0,48)
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false
+  }
+});  
 let h="<div class='card'><h3>⏰ 24 sata</h3><table>";
 for(let i=0;i<24;i++){
   let rain=d.hourly.precipitation_probability[i];
