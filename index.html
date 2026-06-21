@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="hr"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MeteoHR Pro Advanced</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MeteoHR Ultimate 3.0</title>
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+</head><body>
 <div class="wrap">
-<h1>🌦️ MeteoHR Pro Advanced</h1>
-<input id="place" placeholder="Upiši mjesto"><button onclick="loadWeather()">Prikaži</button>
-<div id="summary"></div>
-<div id="risk"></div>
+<h1>🌦️ MeteoHR Ultimate 3.0</h1>
+<input id="place" placeholder="Upiši mjesto">
+<button onclick="loadWeather()">Prikaži</button>
+<button onclick="myLocation()">📍 Moja lokacija</button>
+<div id="summary"></div><div id="alerts"></div>
 <div id="map"></div>
 <canvas id="tempChart"></canvas>
 <canvas id="windChart"></canvas>
-<div id="forecast"></div>
-</div>
-<script src="app.js"></script>
-</body></html>
+<div id="hourly"></div><div id="forecast"></div>
+</div><script src="js/app.js"></script></body></html>
