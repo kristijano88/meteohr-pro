@@ -83,10 +83,12 @@ for(let i=0;i<24;i++){
 
   h+=`
   <tr>
-    <td>${ico}</td>
-    <td>${d.hourly.time[i].slice(11,16)}</td>
-    <td>${d.hourly.temperature_2m[i]}°C</td>
-    <td>${rain}%</td>
+    <th></th>
+<th>Sat</th>
+<th>Temp</th>
+<th>Kiša</th>
+<th>Vjetar</th>
+<th>Udari</th>
   </tr>`;
 };
 hourly.innerHTML=h+"</table></div>";
